@@ -3,10 +3,17 @@
     <title>Nothing - Home</title>
     <script src="index.js" defer></script>
   </head>
-  <body style="filter: invert(1); background: black">
+  <body style="background: black; color: white">
     <h1>Home</h1>
-    <p id="welcome" data-text="Welcome to {what} {name}!" data-dep="what;name">
-      Welcome to Nothing Hassan!
+    <p
+      id="welcome"
+      data-text="Welcome to {what}, {name}! {what} is here."
+      data-style="color: {color}"
+      style="color: blue"
+      data-title="Title!"
+      onclick="onClickWelcome(event)"
+    >
+      Welcome to Nothing, Hassan! Nothing is here.
     </p>
     <a href="/about">Go to About</a>
   </body>
