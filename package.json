@@ -1,0 +1,18 @@
+{
+  "name": "n",
+  "version": "1.0.0",
+  "description": "it's nothing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node_modules/serve/build/main.js -p 4000 ./src/pages/"
+  },
+  "author": "Hassan Heydari Nasab",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0"
+  }
+}
