@@ -1,7 +1,8 @@
 <html>
   <head>
     <title>Nothing - Home</title>
-    <script src="index.js" defer></script>
+    <script src="/components/index.js" type="module"></script>
+    <script src="index.js" type="module"></script>
   </head>
   <body style="background: black; color: white">
     <h1>Home</h1>
@@ -9,12 +10,24 @@
       id="welcome"
       data-text="Welcome to {what}, {name}! {what} is here."
       data-style="color: {color}"
-      style="color: blue"
+      style="color: red"
       data-title="Title!"
       onclick="onClickWelcome(event)"
     >
       Welcome to Nothing, Hassan! Nothing is here.
     </p>
+    <ol>
+      <li data-repeat="users" data-key="id" data-text="{users.name}">
+        Example Name
+      </li>
+    </ol>
+    <my-counter data-text="{count} seconds">0 seconds</my-counter>
+    <my-counter
+      data-text="{count} seconds"
+      data-style="color: {color}"
+      style="color: red"
+      >10 seconds</my-counter
+    >
     <a href="/about">Go to About</a>
   </body>
 </html>
