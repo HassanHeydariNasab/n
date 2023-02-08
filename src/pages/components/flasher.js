@@ -7,6 +7,7 @@ export class MyFlasher extends N {
   }
 
   connectedCallback() {
+    super.connectedCallback();
     this.interval = setInterval(() => {
       this.updateState({
         count: this.state.count + 1,
@@ -16,6 +17,7 @@ export class MyFlasher extends N {
   }
 
   disconnectedCallback() {
+    super.disconnectedCallback();
     if (this.interval) {
       clearInterval(this.interval);
     }

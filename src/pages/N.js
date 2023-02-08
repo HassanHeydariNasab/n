@@ -1,12 +1,20 @@
 export class N extends HTMLElement {
   constructor() {
     super();
+    this.elements = [this];
   }
   state = {};
+  static stateRegex = /{(.*?)}/;
+  static stateReplaceAllRegex = /{(.*?)}/g;
+
+  connectedCallback() {
+    // TODO update this.elements when elements added or removed.
+    this.elements.push(...this.querySelectorAll("*"));
+  }
 
   updateElementText({ element }) {
     const newText = element.dataset.text?.replaceAll(
-      /{(.*?)}/g,
+      N.stateReplaceAllRegex,
       (_, group) => this.state[group]
     );
     if (element.textContent !== newText) {
@@ -16,7 +24,7 @@ export class N extends HTMLElement {
 
   updateElementAttribute({ element, attribute }) {
     const newValue = element.dataset[attribute]?.replaceAll(
-      /{(.*?)}/g,
+      N.stateReplaceAllRegex,
       (_, group) => this.state[group]
     );
     if (element.getAttribute(attribute) !== newValue) {
@@ -30,10 +38,9 @@ export class N extends HTMLElement {
       this.state[key] = update[key];
     }
 
-    const elements = [...this.querySelectorAll("*"), this];
-    for (let element of elements) {
+    for (let element of this.elements) {
       // innerText
-      const textDependencies = element.dataset?.text?.match(/{(.*?)}/);
+      const textDependencies = element.dataset?.text?.match(N.stateRegex);
       if (
         textDependencies?.some((dep) => keys.includes(dep)) ||
         element.textContent.length === 0
@@ -45,7 +52,7 @@ export class N extends HTMLElement {
         (attribute) => attribute !== "text"
       );
       for (let attribute of attributes) {
-        const dependencies = element.dataset[attribute]?.match(/{(.*?)}/);
+        const dependencies = element.dataset[attribute]?.match(N.stateRegex);
         if (
           dependencies?.some((dep) => keys.includes(dep)) ||
           !element.hasAttribute(attribute)
