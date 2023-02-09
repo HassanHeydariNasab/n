@@ -21,15 +21,13 @@
         Example Name
       </li>
     </ol>
-    <my-counter data-text="{count} seconds">0 seconds</my-counter>
-    <my-counter
-      data-text="{count} seconds"
-      data-style="color: {color}"
-      style="color: red"
-      >10 seconds</my-counter
-    >
-    <my-flasher style="border: 1px solid blue">
-      <a href="/about" data-style="color: {color}">Go to About</a>
+    <my-counter></my-counter>
+    <my-flasher>
+      <div slot="content">
+        <a href="/about" data-style="color: {color}">Go to About</a>
+        <my-counter></my-counter>
+        Text
+      </div>
     </my-flasher>
   </body>
 </html>

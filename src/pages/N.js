@@ -2,14 +2,18 @@ export class N extends HTMLElement {
   constructor() {
     super();
     this.elements = [this];
+    this.template = "";
   }
   state = {};
   static stateRegex = /{(.*?)}/;
   static stateReplaceAllRegex = /{(.*?)}/g;
 
   connectedCallback() {
+    this.attachShadow({ mode: "open" });
+    this.shadowRoot.innerHTML = this.template;
     // TODO update this.elements when elements added or removed.
-    this.elements.push(...this.querySelectorAll("*"));
+    this.elements.push(...this.shadowRoot.querySelectorAll("*"));
+    console.log(this.elements);
   }
 
   updateElementText({ element }) {

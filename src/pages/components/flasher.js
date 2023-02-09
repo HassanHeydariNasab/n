@@ -4,6 +4,9 @@ export class MyFlasher extends N {
   constructor() {
     super();
     this.state = { count: 0, color: "red" };
+    this.template = `<div data-style="border: 1px solid {color}; color: {color}" style="border: 1px solid green">
+                        <slot name="content">Nothing Yet!</slot>
+                     </div>`;
   }
 
   connectedCallback() {

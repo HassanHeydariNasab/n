@@ -4,6 +4,9 @@ export class MyCounter extends N {
   constructor() {
     super();
     this.state = { count: 0, color: "red" };
+    this.template = `
+        <span data-text="{count} seconds" data-style="color: {color}" style="color: red">0 seconds</span>
+      `;
   }
 
   connectedCallback() {
