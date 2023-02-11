@@ -13,7 +13,13 @@ export class N extends HTMLElement {
     this.shadowRoot.innerHTML = this.template;
     // TODO update this.elements when elements added or removed.
     this.elements.push(...this.shadowRoot.querySelectorAll("*"));
-    console.log(this.elements);
+    for (let element of this.elements) {
+      if (element.tagName === "SLOT") {
+        this.elements.push(
+          ...(element.assignedElements()?.at(0)?.querySelectorAll("*") || [])
+        );
+      }
+    }
   }
 
   updateElementText({ element }) {

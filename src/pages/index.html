@@ -5,29 +5,33 @@
     <script src="index.js" type="module"></script>
   </head>
   <body style="background: black; color: white">
-    <h1>Home</h1>
-    <p
-      id="welcome"
-      data-text="Welcome to {what}, {name}! {what} is here."
-      data-style="color: {color}"
-      style="color: red"
-      data-title="Title!"
-      onclick="onClickWelcome(event)"
-    >
-      Welcome to Nothing, Hassan! Nothing is here.
-    </p>
-    <ol>
-      <li data-repeat="users" data-key="id" data-text="{users.name}">
-        Example Name
-      </li>
-    </ol>
-    <my-counter></my-counter>
-    <my-flasher>
-      <div slot="content">
-        <a href="/about" data-style="color: {color}">Go to About</a>
+    <n-page>
+      <span slot="content">
+        <h1>Home</h1>
+        <p
+          id="welcome"
+          data-text="Welcome to {where}, {name}! {where} is here."
+          data-style="color: {color}"
+          style="color: red"
+          data-title="Title!"
+          onclick="onClickWelcome(event)"
+        >
+          Welcome to Nothing, Hassan! Nothing is here.
+        </p>
+        <ol>
+          <li data-repeat="users" data-key="id" data-text="{users.name}">
+            Example Name
+          </li>
+        </ol>
         <my-counter></my-counter>
-        Text
-      </div>
-    </my-flasher>
+        <my-flasher>
+          <div slot="content">
+            <a href="/about" data-style="color: {color}">Go to About</a>
+            <my-counter></my-counter>
+            Text
+          </div>
+        </my-flasher></span
+      ></n-page
+    >
   </body>
 </html>

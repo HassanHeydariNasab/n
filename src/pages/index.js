@@ -1,5 +1,5 @@
 setTimeout(() => {
-  //_updateState({ what: "Everything", name: "Najmeh", color: "blue" });
+  // getElementById . updateState({ what: "Everything", name: "Najmeh", color: "blue" });
 }, 1000);
 
 function onClickWelcome(event) {
